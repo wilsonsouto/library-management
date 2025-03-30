@@ -1,6 +1,7 @@
 ﻿using LibraryManagement.Enums;
 using LibraryManagement.Models;
 using LibraryManagement.Services;
+using LibraryManagement.Helpers;
 using Spectre.Console;
 
 namespace LibraryManagement.Views
@@ -44,21 +45,45 @@ namespace LibraryManagement.Views
             Console.Write("Enter the book name: ");
             var book = Console.ReadLine();
 
+            while (!ValidationHelper.IsValidateString(book!))
+            {
+                Console.Write("Try again. Enter the book name: ");
+                book = Console.ReadLine();
+            }
+
             Console.Write("Enter the author's name: ");
             var author = Console.ReadLine();
 
+            while (!ValidationHelper.IsValidateString(author!))
+            {
+                Console.Write("Try again. Enter the author's name: ");
+                author = Console.ReadLine();
+            }
+
             Console.Write("Enter the year of publication: ");
-            var year = Convert.ToInt32(Console.ReadLine());
+            var year = Console.ReadLine();
+
+            while (!ValidationHelper.IsValidateString(year!))
+            {
+                Console.Write("Try again. Enter the year of publication: ");
+                year = Console.ReadLine();
+            }
 
             Console.Write("Provide a brief description of the book: ");
             var description = Console.ReadLine();
+
+            while (!ValidationHelper.IsValidateString(description!))
+            {
+                Console.Write("Try again. Provide a brief description of the book: ");
+                description = Console.ReadLine();
+            }
 
             var genre = AnsiConsole.Prompt(
                 new SelectionPrompt<BookGenre>()
                 .Title("Select the book genre from the following options: ")
                 .AddChoices(Enum.GetValues<BookGenre>()));
 
-            return new BookModel(book, author, year, description, genre);
+            return new BookModel(book!, author!, int.Parse(year!), description!, genre);
         }
 
         private static void ViewBooks(List<BookModel> books)
