@@ -1,6 +1,8 @@
-﻿namespace LibraryManagement.Models
+﻿using LibraryManagement.Enums;
+
+namespace LibraryManagement.Models
 {
-    public class BookModel(string name, string author, int year, string description, string genre)
+    public class BookModel(string name, string author, int year, string description, BookGenre genre)
     {
         public string Book { get; set; } = name;
 
@@ -10,7 +12,7 @@
 
         public string Description { get; set; } = description;
 
-        public string Genre { get; set; } = genre;
+        public BookGenre Genre { get; set; } = genre;
 
     }
 }

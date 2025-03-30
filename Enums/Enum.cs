@@ -9,7 +9,7 @@
         DeleteBook,
     }
 
-    enum BookGenre
+    public enum BookGenre
     {
         Fantasy,
         ScienceFiction,
