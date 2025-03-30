@@ -4,7 +4,9 @@ namespace LibraryManagement.Models
 {
     public class BookModel(string name, string author, int year, string description, BookGenre genre)
     {
-        public string Book { get; set; } = name;
+        public int Id { get; set; }
+
+        public string Name { get; set; } = name;
 
         public string Author { get; set; } = author;
 
