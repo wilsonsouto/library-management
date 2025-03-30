@@ -75,7 +75,7 @@ namespace LibraryManagement.Views
             {
                 table.AddRow(
                     book.Id.ToString(),
-                    book.Name,
+                    book.Title,
                     book.Author,
                     book.Year.ToString(),
                     book.Description,
